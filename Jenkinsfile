@@ -1,45 +1,43 @@
-pipeline{
-    agent any 
+pipeline {
+    agent any
 
-    stages{
-        stage('checkout'){
-            steps{
+    stages {
+        stage('Checkout') {
+            steps {
                 checkout scm
-                echo "github sourse code checkout suussfuly"
-
+                echo 'GitHub source code checkout successful!'
             }
         }
 
-         stage('build'){
-                steps{
-                    echo "biuld succesful"
-                    sh "ls -la"
-                }
+        stage('Build') {
+            steps {
+                echo 'Building application...'
+                sh 'ls -la'
             }
+        }
 
-         stage('test'){
-                steps{
-                 echo 'Testing application...'
-                 sh 'test -f index.html'
-                 sh "grep -q 'Goognu Jenkins CI/CD' index.html"
-                }
+        stage('Test') {
+            steps {
+                echo 'Testing application...'
+                sh 'test -f index.html'
+                sh "grep -q 'Goognu Jenkins CI/CD' index.html"
             }
+        }
 
-         stage('deploy'){
-                steps{
-                   echo 'Application deployment preparation successful!'
-                }
+        stage('Deploy') {
+            steps {
+                echo 'Application deployment preparation successful!'
             }
-
+        }
     }
 
-    post{
-            success{
-                echo "pipeline CI/CD successful"
-            }
-
-            failure{
-                echo "pipeline CI/CD failed"
-            }
+    post {
+        success {
+            echo 'CI/CD Pipeline completed successfully!'
         }
+
+        failure {
+            echo 'Pipeline failed. Check console output.'
+        }
+    }
 }

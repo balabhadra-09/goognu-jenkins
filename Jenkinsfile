@@ -30,8 +30,10 @@ pipeline{
                    echo 'Application deployment preparation successful!'
                 }
             }
-            
-        post{
+
+    }
+
+    post{
             success{
                 echo "pipeline CI/CD successful"
             }
@@ -40,5 +42,4 @@ pipeline{
                 echo "pipeline CI/CD failed"
             }
         }
-    }
 }

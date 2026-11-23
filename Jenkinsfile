@@ -24,11 +24,14 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            steps {
-                echo 'Application deployment preparation successful!'
-            }
-        }
+      stage('Deploy') {
+    steps {
+        sh '''
+            cp index.html /var/www/goognu-jenkins/index.html
+            echo "Application deployed successfully!"
+        '''
+    }
+}
     }
 
     post {

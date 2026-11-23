@@ -10,33 +10,27 @@ pipeline{
             }
         }
 
-        stages{
-            stage('build'){
+         stage('build'){
                 steps{
                     echo "biuld succesful"
                     sh "ls -la"
                 }
             }
-        }
 
-        stages{
-            stage('test'){
+         stage('test'){
                 steps{
                  echo 'Testing application...'
                  sh 'test -f index.html'
                  sh "grep -q 'Goognu Jenkins CI/CD' index.html"
                 }
             }
-        }
 
-        steges{
-            stage('deploy'){
+         stage('deploy'){
                 steps{
                    echo 'Application deployment preparation successful!'
                 }
             }
-        }
-
+            
         post{
             success{
                 echo "pipeline CI/CD successful"
